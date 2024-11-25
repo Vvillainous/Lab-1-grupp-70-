@@ -12,27 +12,63 @@
             int timeDifference = 6;
             int travelHours = 7;
             int travelMinutes = 25;
+
+            // The while loop is there to present the user with the menu again incase of a invalid input
             while (menuSelection != 3)
             {
-                //The clearing method is used to clear the console before the loop starts again.
+
 
                 Console.Clear();
-                Console.WriteLine("Hello! , Welcome to the flight schedule calculator!\n" + 
-                                  "Which flight would you like to know more about?\n" +
-                                  "1. Stockholm - New York\n" +
-                                  "2. New York - Stockholm\n" +
-                                  "3. Exit program");
+                Console.WriteLine("*******************************************************************************");
+                Console.WriteLine("Hello!,Welcome to the flight schedule calculator!\n" +
+                                    "Which flight would you like to know more about?\n" +
+                                    "1. Stockholm - New York\n" +
+                                    "2. New York - Stockholm\n" +
+                                    "3. Exit program");
 
-                //We put a \n > to make it more clear that a input is required to advance
+                Console.Write("\nWrite your answer here: ");
 
-                Console.Write("\n> ");
-                menuSelection = Int32.Parse(Console.ReadLine());
-
-
+                Int32.TryParse(Console.ReadLine(), out menuSelection);
 
 
+                if (menuSelection == 1)
+                {
+                    // Stockholm - New york (Departure)
+                    int destinationHours = hoursStockholm + travelHours - timeDifference;
+                    int destinationMinutes = minutesStockholm + travelMinutes;
+                    Console.WriteLine("******************************************************************************* \n");
+                    Console.WriteLine($"Departure from Stockholm: {hoursStockholm}:{minutesStockholm.ToString("00")}");
+
+                    //Stockholm - New york(Arrivals)
+                    Console.WriteLine($"Arrival to New york: {destinationHours}:{destinationMinutes}");
+                    Console.WriteLine("\n\n*******************************************************************************");
+                    Console.WriteLine("Press any key to exit the program");
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                }
+                else if (menuSelection == 2)
+                {
+                    // New york - Stockholm (Departure)
+                    int destinationHours = hoursNewyork + travelHours + timeDifference;
+                    int destinationMinutes = minutesNewyork + travelMinutes;
+                    Console.WriteLine("******************************************************************************* \n");
+                    Console.WriteLine($"Departure from New york: {hoursNewyork}:{minutesNewyork.ToString("00")}");
+
+                    // New york - Stockholm  (Arrivals)
+                    Console.WriteLine($"Arrival to Stockholm: {destinationHours}:{destinationMinutes}");
+                    Console.WriteLine("\n\n*******************************************************************************");
+                    Console.WriteLine("Press any key to exit the program");
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid option, please choose a valid option from the menu (1-3).\nPlease press any key to continue...");
+                    Console.ReadKey();
+                }
             }
-            Console.WriteLine("The program will exit now!");
+            Console.WriteLine("The program will exit now!"); 
         }
     }
+  
 }
