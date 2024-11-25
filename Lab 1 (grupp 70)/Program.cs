@@ -2,8 +2,10 @@
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
+            // Variables 
             int menuSelection = -1;
             int hoursStockholm = 14;
             int minutesStockholm = 3;
@@ -61,6 +63,9 @@
                     Console.ReadKey();
                     Environment.Exit(0);
                 }
+                // Break is put here to skip ahead to the "The program will exit now!" part incase of "3" input
+                else if (menuSelection == 3)
+                    break;
                 else
                 {
                     Console.WriteLine("Invalid option, please choose a valid option from the menu (1-3).\nPlease press any key to continue...");
